@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo App</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="app" class="container">
+    <h1>ToDo App</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <form @submit.prevent="addTask">
+          <div class="form-group">
+            <label for="taskInput">New Task</label>
+            <input type="text" id="taskInput" class="form-control" v-model="newTask" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <ul class="list-group">
+          <li v-for="(task, index) in tasks" class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ task }}</span>
+            <div>
+              <button class="btn btn-sm btn-primary" @click="editTask(index)">Edit</button>
+              <button class="btn btn-sm btn-danger" @click="deleteTask(index)">Delete</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
